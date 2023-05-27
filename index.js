@@ -8,16 +8,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const recordButton = document.getElementById("recordButton");
     const urlParams = new URLSearchParams(window.location.search);
     const apiKey = urlParams.get("key"); // Get API Key from URL
-    const stalls = [
-        "one second",
-        "hmm, let's see",
-        "uh, one moment",
-        "got it",
-        "ok",
-        "just a moment",
-        "gotchya",
-        "ah",
-    ];
     let recording = false;
     let myvad = null;
 
@@ -81,10 +71,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
 
         return true;
-    }
-
-    function speakRandomStall() {
-        speak(stalls[Math.floor(Math.random() * stalls.length)]);
     }
 
     function postDataToAPI(audio) {
