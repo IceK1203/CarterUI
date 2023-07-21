@@ -1,4 +1,4 @@
-body {
+.central {
     font-family: sans-serif;
     font-family: "Exo", sans-serif;
     background: #070815;
@@ -18,32 +18,42 @@ body {
 
 .time{
     font-size: 38px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: white;
+    margin-top: 5px;
+    margin-left: 10px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: left;
 }
 
 .date{
-    font-size: 42px;
-    font-weight: bold;
-    margin-bottom: 4px;
+    font-size: 35px;
+    margin-top: 48px;
+    margin-left: 10px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: left;
 }
 
 #recordButton {
-    display: block;
-    margin: 10px auto;
-    padding: 5px 20px;
-    font-size: 1.4rem;
-    border: 5px solid rgb(27, 27, 240);
-    border-radius: 50%;
-    height: 160px;
-    width: 160px;
-    background-color: #0084ff59;
-    box-shadow: 0 0 40px blue;
+    background-color: #00052cd6; /* Green */
+    border: 1px solid white;
+    border-radius: 4px;
     color: white;
+    padding: 16px 33px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
     cursor: pointer;
     font-family: "Exo", sans-serif;
+    font-weight: 450;
+    margin-top: 10px;
 }
+
 
 .typewriter {
     width: fit-content;

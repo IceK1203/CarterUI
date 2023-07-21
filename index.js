@@ -1,4 +1,4 @@
-// CarterUI Version 0.1
+// CarterUI Version 0.5
 // By 2Devs
 
 // on document ready
@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const recordButton = document.getElementById("recordButton");
     const urlParams = new URLSearchParams(window.location.search);
     const apiKey = urlParams.get("key"); // Get API Key from URL
+    const aiName = urlParams.get("name"); // Get name from URL
+    console.log(aiName);
+    if (aiName == null) { recordButton.innerText = "Speak"; } else { recordButton.innerText = aiName }
     let recording = false;
     let myvad = null;
 
@@ -56,13 +59,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
         if (day == 7) { dateArea.innerText = "Sunday"}
     }
     
-    showDate();
+    //showDate();
 
     function processAudio(audio) {
         const audioDuration = audio.length / 16000;
 
         if (audioDuration < 0.5) {
-            recordButton.innerText = "Speak";
+            recordButton.innerText = aiName;
             return false;
         }
 
@@ -91,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             .then((data) => {
                 var outputText = data.output.text;
 
-                recordButton.innerText = "Speak";
+                recordButton.innerText = aiName;
 
                 // restart animation of output
                 const maxLength = 50;
@@ -159,12 +162,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
             preSpeechPadFrames: 1,
             redemptionFrames: 3,
             onSpeechStart: () => {
-                recordButton.innerText = "Listening...";
+                recordButton.innerText = "Listening △";
             },
             onSpeechEnd: (audio) => {
                 myvad.pause();
 
-                recordButton.innerText = "Processing...";
+                recordButton.innerText = "Processing ▽";
 
                 if (processAudio(audio)) {
                     postDataToAPI(audio);
@@ -174,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
     recordButton.addEventListener("click", () => {
         recording = true;
-        recordButton.innerText = "Listening...";
+        recordButton.innerText = "Listening △";
         myvad.start();
     });
     main();
