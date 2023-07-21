@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const audioDuration = audio.length / 16000;
 
         if (audioDuration < 0.5) {
-            recordButton.innerText = aiName;
+            if (aiName == null) { recordButton.innerText = "Speak"; } else { recordButton.innerText = aiName }
+            //recordButton.innerText = aiName;
             return false;
         }
 
@@ -86,15 +87,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
             body: JSON.stringify({
                 audio: base64,
                 key: apiKey,
-                playerId: "Primary User",
+                user_id: "Primary User",
                 speak: true
             }),
         })
             .then((response) => response.json())
             .then((data) => {
                 var outputText = data.output.text;
+                console.log(outputText);
 
-                recordButton.innerText = aiName;
+                if (aiName == null) { recordButton.innerText = "Speak"; } else { recordButton.innerText = aiName }
+                //recordButton.innerText = aiName;
 
                 // restart animation of output
                 const maxLength = 50;
